@@ -1,0 +1,50 @@
+{% extends "pp5ShopBundle::sidebar.html.twig" %}
+
+
+{% block content %}
+    <div class="media">
+        <div class="media-left">
+            <a href="#">
+                <img class="media-object" height="150" width="150" src="{{ movie.cover }}" alt="{{ movie.title }}">
+            </a>
+        </div>
+        <div class="media-body">
+            <h4 class="media-heading">{{ movie.title }}({{ movie.releaseDate|date('Y') }})</h4>
+            <p>{{ movie.description }}</p>
+            <p>
+                {% for genre in movie.genres %}
+                    {{ genre.name }},
+                {%  endfor %}
+            </p>
+            <a class="btn btn-success" href="{{ path('pp5_shop_order_movie', {'id': movie.id}) }}">Wypożycz({{ movie.price }}zł)</a>
+        </div>
+    </div>
+    <div>
+        <h3>Aktorzy</h3>
+        <p>
+            {% for actor in movie.actors %}
+                {{ actor.firstname}} {{ actor.lastname }},
+            {% endfor %}
+        </p>
+    </div>
+    <hr />
+    <div>
+        <h3>Recenzje</h3>
+        {% if is_granted('ROLE_USER') %}
+        <form class="form-horizontal" method="POST">
+
+            {{ form_row(form.text) }}
+            {{ form_row(form.Zapisz) }}
+        {{ form_end(form) }}
+            {% endif %}
+
+            <div class="list-group" style="margin-top: 20px;">
+                {% for review in movie.reviews %}
+                    <span class="list-group-item">
+                        <h4 class="list-group-item-heading">{{ review.user.username }} - {{ review.createdAt|date('Y-m-d') }}</h4>
+                        <p class="list-group-item-text">{{ review.text }}</p>
+                    </span>
+                {% endfor %}
+            </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,27 @@
+pp5_shop_homepage:
+    path:     /
+    defaults: { _controller: pp5ShopBundle:Home:index }
+
+pp5_shop_genre_list:
+    path:     /genres
+    defaults: { _controller: pp5ShopBundle:Genre:allGenres }
+
+pp5_shop_genre_movies:
+    path:     /genres/{id}
+    defaults: { _controller: pp5ShopBundle:Genre:displayGenre }
+
+pp5_shop_movie_list:
+    path:     /movies
+    defaults: { _controller: pp5ShopBundle:Movie:allMovies }
+
+pp5_shop_movie_display:
+    path:     /movies/{id}
+    defaults: { _controller: pp5ShopBundle:Movie:display }
+
+pp5_shop_order_movie:
+    path:     /movies/{id}/order
+    defaults: { _controller: pp5ShopBundle:Order:order }
+
+pp5_shop_user_orders:
+    path:     /my-orders
+    defaults: { _controller: pp5ShopBundle:User:userOrders }

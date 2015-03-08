@@ -1,0 +1,30 @@
+{% extends "pp5ShopBundle::sidebar.html.twig" %}
+
+{% block content %}
+
+    <div  class="row">
+        <h2>Moje zamówienia</h2>
+        <table class="table table-striped">
+            <tr>
+                <th>#</th>
+                <th>Film</th>
+                <th>Cena</th>
+                <th>Status</th>
+            </tr>
+            {% for order in user.orders %}
+                <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.movie.title }}</td>
+                    <td>{{ order.price }}</td>
+                    {% if order.status == 0 %}
+                        <td>w trakcie</td>
+                    {% else %}
+                        <td>zaplacone</td>
+                    {% endif %}
+
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+
+{% endblock %}

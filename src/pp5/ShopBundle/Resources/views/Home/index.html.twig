@@ -1,0 +1,43 @@
+{% extends "pp5ShopBundle::sidebar.html.twig" %}
+
+
+
+{% block content %}
+    <div class="list-group">
+        <h2>Nowości w wypożyczalni</h2>
+        {% for movie in movies %}
+            <a href="{{ path('pp5_shop_movie_display', {'id': movie.id}) }}" class="list-group-item">
+                <h4 class="list-group-item-heading">{{ movie.title }}({{ movie.releaseDate|date('Y') }})</h4>
+                <p class="list-group-item-text" style="overflow:hidden">
+                    <img style="float:left;margin-right: 10px;" src="{{ movie.cover }}" height="50" width="50" />
+
+                    <span style="float:left"></span>{{ movie.description }}
+                </p>
+            </a>
+        {% endfor %}
+
+        <h2>Najczesciej komentowane</h2>
+        {% for movie in mostCommented %}
+            <a href="{{ path('pp5_shop_movie_display', {'id': movie.id}) }}" class="list-group-item">
+                <h4 class="list-group-item-heading">{{ movie.title }}({{ movie.releaseDate|date('Y') }})</h4>
+                <p class="list-group-item-text" style="overflow:hidden">
+                    <img style="float:left;margin-right: 10px;" src="{{ movie.cover }}" height="50" width="50" />
+
+                    <span style="float:left"></span>{{ movie.description }}
+                </p>
+            </a>
+        {% endfor %}
+
+        <h2>Najczesciej kupowane</h2>
+        {% for movie in mostPopular %}
+            <a href="{{ path('pp5_shop_movie_display', {'id': movie.id}) }}" class="list-group-item">
+                <h4 class="list-group-item-heading">{{ movie.title }}({{ movie.releaseDate|date('Y') }})</h4>
+                <p class="list-group-item-text" style="overflow:hidden">
+                    <img style="float:left;margin-right: 10px;" src="{{ movie.cover }}" height="50" width="50" />
+
+                    <span style="float:left"></span>{{ movie.description }}
+                </p>
+            </a>
+        {% endfor %}
+    </div>
+{% endblock %}

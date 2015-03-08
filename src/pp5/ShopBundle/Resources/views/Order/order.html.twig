@@ -1,0 +1,14 @@
+{% extends "pp5ShopBundle::sidebar.html.twig" %}
+
+{% block content %}
+
+    <div  class="row">
+        <h2>Informacje o zamówieniu</h2>
+        <h4>{{ order.movie.title }}</h4>
+        <h5>Cena: {{ order.price }} zł</h5>
+        <h5>Termin płatności: 14 dni -  <strong>{{ "now" | date_modify("+14 days")|date("m/d/Y") }}</strong>(po nie otrzymaniu płatności usuwamy zamówienie z systemu)</h5>
+        <h5>Płatności proszę dostarczyć osobiście</h5>
+
+    </div>
+
+{% endblock %}

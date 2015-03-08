@@ -1,0 +1,15 @@
+{% extends "pp5ShopBundle::sidebar.html.twig" %}
+
+
+
+{% block content %}
+    <div class="list-group">
+        <h2>Gatunki filmów</h2>
+        {% for genre in genres %}
+            <a href="{{ path('pp5_shop_genre_movies', {'id': genre.id}) }}" class="list-group-item">
+                <h4 class="list-group-item-heading">{{ genre.name }}</h4>
+            </a>
+
+        {% endfor %}
+    </div>
+{% endblock %}

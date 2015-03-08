@@ -1,0 +1,12 @@
+{% extends "pp5ShopBundle::layout.html.twig" %}
+
+{% block menu %}
+    <ul class="list-group">
+        <li class="list-group-item"><a href="{{ path('pp5_shop_homepage') }}">Strona Główna</a></li>
+        <li class="list-group-item"><a href="{{ path('pp5_shop_movie_list') }}">Filmy</a></li>
+        <li class="list-group-item"><a href="{{ path('pp5_shop_genre_list') }}">Gatunki</a></li>
+        {% if is_granted('ROLE_USER') %}
+            <li class="list-group-item"><a href="{{ path('pp5_shop_user_orders') }}">Moje zamówienia</a></li>
+        {% endif %}
+    </ul>
+{% endblock %}
